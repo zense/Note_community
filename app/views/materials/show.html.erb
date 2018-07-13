@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @material.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @material.content %>
+</p>
+
+<%= link_to 'Edit', edit_material_path(@material) %> |
+<%= link_to 'Back', materials_path %>
+
+
+<%= link_to like_material_path(@material), method: :put, class: "btn btn-default" do %>
+    <span>Upvote</span>
+        <%= @material.get_upvotes.size %>
+<%end%>
+
+
+<% if @reviews.blank? %>
+    <h3>No Comments</h3>
+    <%= link_to "Be the first!", new_material_review_path(@material), class: "btn btn-default" %>
+<% else %>
+    <h3>Comments</h3>
+    <% @reviews.each do |review| %>
+        <div class="reviews">
+            <li><p><%= review.comment %></p></li>
+            <p><%= review.user.email %></p>
+        </div>
+    <%end%>
+    <%= link_to "Add a comment", new_material_review_path(@material), class: "btn btn-default" %>
+    <%end%>
