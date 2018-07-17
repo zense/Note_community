@@ -18,7 +18,10 @@
     <span>Upvote</span>
         <%= @material.get_upvotes.size %>
 <%end%>
-
+<%= link_to unlike_material_path(@material), method: :put, class: "btn btn-default" do %>
+    <span>Downvote</span>
+        <%= @material.get_upvotes.size %>
+<%end%>
 
 <% if @reviews.blank? %>
     <h3>No Comments</h3>

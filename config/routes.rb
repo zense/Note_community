@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :reviews, except: [:show, :index]
       member do
           put "like", to: "materials#upvote"
+          put "unlike", to: "materials#unvote"
       end
 
   end

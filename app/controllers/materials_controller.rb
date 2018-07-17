@@ -1,5 +1,5 @@
 class MaterialsController < ApplicationController
-  before_action :set_material, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :set_material, only: [:show, :edit, :update, :destroy, :upvote, :unvote]
   before_action :authenticate_user!
 
   # GET /materials
@@ -69,11 +69,11 @@ class MaterialsController < ApplicationController
   end
 
 
-      def unvote
-          @material.unliked_by current_user
-          redirect_to @material
-      end
- 
+  def unvote
+      @material.unliked_by current_user
+      redirect_to @material
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
